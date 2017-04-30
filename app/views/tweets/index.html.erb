@@ -1,0 +1,21 @@
+<section>
+<% if alert.present? %>
+  <div class="alert alert-success"><%= alert %></div>
+<% end %>
+</section>
+    
+<section>
+<div class="container">
+    <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    
+       <% @tweets.each do |tweet| %>
+       <div class="row">
+        <p><%= tweet.content %></p>
+    
+        <%= link_to "編集", edit_tweet_path(tweet.id), class: 'btn btn-sml btn-success' %>
+        <%= link_to "削除", tweet_path(tweet.id), method: :delete, data: {confirm: '本当に削除していいですか？'}, class: 'btn btn-sml btn-danger'  %>
+       </div>
+       <% end %>
+    </div>
+</div>
+</section>
